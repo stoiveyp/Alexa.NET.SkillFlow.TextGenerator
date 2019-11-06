@@ -72,6 +72,11 @@ namespace Alexa.NET.SkillFlow.Tests
                 new If(ConditionParser.Parse("(false == test) == (5 > 3)")),
                 "if ( false == test ) == ( 5 > 3 ) {\n\t\t}"
             };
+            yield return new object[]
+            {
+                new If(ConditionParser.Parse("(playerClass == 'mage')")),
+                "if ( playerClass == 'mage' ) {\n\t\t}"
+            };
         }
 
         [Theory]
@@ -102,7 +107,10 @@ namespace Alexa.NET.SkillFlow.Tests
         private string ToText(MemoryStream stream)
         {
             stream.Position = 0;
-            return new StreamReader(stream).ReadToEnd();
+            using (var str = new StreamReader(stream))
+            {
+                return str.ReadToEnd();
+            }
         }
     }
 }

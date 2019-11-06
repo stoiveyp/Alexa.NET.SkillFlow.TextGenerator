@@ -10,11 +10,11 @@
     <PackageProjectUrl>https://github.com/stoiveyp/Alexa.NET.SkillFlow.TextGenerator</PackageProjectUrl>
     <RepositoryUrl>https://github.com/stoiveyp/Alexa.NET.SkillFlow.TextGenerator</RepositoryUrl>
     <PackageTags>Alexa, Skillflow</PackageTags>
-    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <PackageReleaseNotes>Tidy up generate methods</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Alexa.NET.SkillFlow.Generator" Version="1.0.0" />
+    <PackageReference Include="Alexa.NET.SkillFlow.Generator" Version="1.0.1" />
     <PackageReference Include="System.IO.Pipelines" Version="4.6.0" />
   </ItemGroup>
 
