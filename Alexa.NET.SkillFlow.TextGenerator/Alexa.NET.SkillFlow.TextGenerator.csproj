@@ -11,6 +11,7 @@
     <RepositoryUrl>https://github.com/stoiveyp/Alexa.NET.SkillFlow.TextGenerator</RepositoryUrl>
     <PackageTags>Alexa, Skillflow</PackageTags>
     <PackageReleaseNotes>Tidy up generate methods</PackageReleaseNotes>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
