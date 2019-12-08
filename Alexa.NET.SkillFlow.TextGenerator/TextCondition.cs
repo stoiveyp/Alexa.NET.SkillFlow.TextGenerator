@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Alexa.NET.SkillFlow.Conditions;
 
@@ -45,7 +46,14 @@ namespace Alexa.NET.SkillFlow.TextGenerator
                 case LessThanEqual lessThanEqual:
                     return context.WriteString(" <= ");
                 case LiteralValue literalValue:
-                    return context.WriteString(literalValue.Value.ToString());
+                    var litValue = literalValue.Value switch
+                    {
+                        string s => $"'{s}'",
+                        bool b => b.ToString().ToLower(),
+                        _ => literalValue.Value.ToString()
+
+                    };
+                    return context.WriteString(litValue);
                 case Not not:
                     if (start)
                     {

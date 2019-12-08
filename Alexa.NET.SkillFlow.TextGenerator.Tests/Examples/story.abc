@@ -21,6 +21,10 @@
 	*say
 		You spend the morning inside doing chores and playing video games. Late morning, you look outside and notice that the day is just getting nicer and nicer. It occurs to you that you still have time to fit in a hike. Do you reconsider and go on a hike?
 	*then
+	    time
+		roll 3d6k1 + 10
+		buy item="test" success="success" fail="fail"
+		BGM http://www.example.com/test.mp3
 		hear yes, go on a hike, reconsider {
             -> get ready
         }

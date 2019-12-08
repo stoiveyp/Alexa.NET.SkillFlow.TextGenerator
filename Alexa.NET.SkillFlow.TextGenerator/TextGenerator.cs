@@ -4,11 +4,16 @@ using Alexa.NET.SkillFlow.Conditions;
 using Alexa.NET.SkillFlow.Generator;
 using Alexa.NET.SkillFlow.Instructions;
 using Alexa.NET.SkillFlow.Terminators;
+using Alexa.NET.SkillFlow.TextGenerator.CoreExtensions;
 
 namespace Alexa.NET.SkillFlow.TextGenerator
 {
     public class TextGenerator : SkillFlowGenerator<TextGeneratorContext>
     {
+        public TextGenerator()
+        {
+            this.AddCoreExtensions();
+        }
         protected override async Task Begin(Scene scene, TextGeneratorContext context)
         {
             await context.WriteLine($"@{scene.Name}");
@@ -126,6 +131,10 @@ namespace Alexa.NET.SkillFlow.TextGenerator
                 case Return returnvalue:
                     return context.WriteLine(">> RETURN");
                 default:
+                    if (Extensions.ContainsKey(instruction.GetType()))
+                    {
+                        return Extensions[instruction.GetType()].Generate(instruction, context);
+                    }
                     return Noop(context);
 
             }
